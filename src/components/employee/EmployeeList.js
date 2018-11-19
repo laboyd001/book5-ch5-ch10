@@ -10,7 +10,7 @@ export default class EmployeeList extends Component {
             <div key={employee.id}>
                <li> {employee.name} </li>
                <a href="#"
-                  onClick={() => this.props.deleteEmployee(employee.id)}
+                  onClick={() => this.props.deleteEmployee(employee.id)} alt="employee"
                   >Delete</a>
             </div>
          )

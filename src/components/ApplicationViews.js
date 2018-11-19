@@ -60,6 +60,19 @@ export default class ApplicationViews extends Component {
       )
     }
 
+    deleteOwner = id => {
+        return fetch(`http://localhost:5002/owners/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/owners`))
+        .then(e => e.json())
+        .then(owners => this.setState({
+            owners: owners
+        })
+      )
+    }
+
 
 
     // You will notice the use of <React.Fragment />. That is simply a React wrapper around your old friend document.createDocumentFragment(). What this does is prevent unnecessary <div>, <article>, or <section> tags from being created.
@@ -77,7 +90,7 @@ export default class ApplicationViews extends Component {
                     return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                 }} /> 
                 <Route exact path="/owners" render={(props) => {
-                    return <OwnerList owners={this.state.owners} />
+                    return <OwnerList deleteOwner={this.deleteOwner} owners={this.state.owners} />
                 }} />   
             </React.Fragment>
         )
