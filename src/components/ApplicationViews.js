@@ -34,6 +34,8 @@ export default class ApplicationViews extends Component {
         .then (() => this.setState(newState))
     }
 
+    // A Note About Component Method Definitions: If a method will be passed to a child component to execute, via props, you must use the syntax like deleteAnimal below, with a fat arrow. Otherwise,use the method shorthand you learned in JS Class syntax, without the fat arrow, like so:
+
     deleteAnimal = id => {
         return fetch(`http://localhost:5002/animals/${id}`, {
             method: "DELETE"
@@ -72,7 +74,7 @@ export default class ApplicationViews extends Component {
         })
       )
     }
-
+// Above 'componentDidMount' and 'delete' are methods on the class 'ApplicationViews'
 
 
     // You will notice the use of <React.Fragment />. That is simply a React wrapper around your old friend document.createDocumentFragment(). What this does is prevent unnecessary <div>, <article>, or <section> tags from being created.
@@ -84,13 +86,18 @@ export default class ApplicationViews extends Component {
                     return <LocationList locations={this.state.locations} />
                 }} />
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    return <AnimalList 
+                    deleteAnimal={this.deleteAnimal} 
+                    animals={this.state.animals} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    return <EmployeeList 
+                    deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                 }} /> 
                 <Route exact path="/owners" render={(props) => {
-                    return <OwnerList deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                    return <OwnerList 
+                    deleteOwner={this.deleteOwner} 
+                    owners={this.state.owners} />
                 }} />   
             </React.Fragment>
         )
