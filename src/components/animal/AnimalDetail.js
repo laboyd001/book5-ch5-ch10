@@ -15,9 +15,9 @@ export default class AnimalDetail extends Component {
       ) || {};
 
     return (
-      <section className="animal">
+      <section className="animal list">
         <div key={animal.id} className="card">
-          <div className="card-body">
+          <div className="card-body details">
             <h4 className="card-title">
               <img src={dog} className="icon--dog" alt="dog" />
               {animal.name}

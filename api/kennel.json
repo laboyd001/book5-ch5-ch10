@@ -32,19 +32,23 @@
   "animals": [
     {
       "id": 3,
-      "name": "Angus"
+      "name": "Angus",
+      "breed": "Pitbull"
     },
     {
       "id": 4,
-      "name": "Henley"
+      "name": "Henley",
+      "breed": "Labrador Retriever"
     },
     {
       "id": 5,
-      "name": "Derkins"
+      "name": "Derkins",
+      "breed": "Beagle"
     },
     {
       "id": 6,
-      "name": "Checkers"
+      "name": "Checkers",
+      "breed": "Pug"
     }
   ],
   "owners": [

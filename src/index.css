@@ -11,6 +11,12 @@
   margin-left: 20px;
 }
 
+.details {
+  
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .animals {
   color: red; 
 }

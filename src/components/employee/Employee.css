@@ -1,9 +1,9 @@
-.animals {
+.employees {
   display: flex;
   justify-content: space-evenly;
 }
 
-.icon--dog {
+.icon--employee {
   width: 50px;
   height: 50px;
 }
