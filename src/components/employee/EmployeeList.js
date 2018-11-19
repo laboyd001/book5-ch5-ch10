@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import girl from "./EmployeeIcon.jpg"
-import "./Animal.css"
+import "./Employee.css"
 import { Link } from "react-router-dom";
 
 // this is the HTML representation of the employee list
