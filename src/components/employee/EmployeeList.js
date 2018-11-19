@@ -9,6 +9,9 @@ export default class EmployeeList extends Component {
         {this.props.employees.map(employee =>
             <div key={employee.id}>
                <li> {employee.name} </li>
+               <a href="#"
+                  onClick={() => this.props.deleteEmployee(employee.id)} alt="employee"
+                  >Delete</a>
             </div>
          )
         }

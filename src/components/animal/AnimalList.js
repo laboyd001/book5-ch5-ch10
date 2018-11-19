@@ -11,7 +11,7 @@ export default class AnimalList extends Component {
           <div key={animal.id} className="card">
             <div className="card-body">
               <h5 className="card-title">
-                <img src={dog} className="icon--dog" />
+                <img src={dog} className="icon--dog" alt="dog" />
                 {animal.name}
                 <a href="#"
                   onClick={() => this.props.deleteAnimal(animal.id)}
