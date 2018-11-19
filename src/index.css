@@ -1,0 +1,30 @@
+.nav-item {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  /* margin: 20px;
+  padding: 20px; */
+}
+
+.list {
+  margin-top:50px;
+  margin-left: 20px;
+}
+
+.animals {
+  color: red; 
+}
+
+
+.employees {
+  color: green;
+}
+
+
+.locations {
+  color: purple;
+ }
+
+.owners {
+  color: brown;
+  }
