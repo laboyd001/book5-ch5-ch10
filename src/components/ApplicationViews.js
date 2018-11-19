@@ -10,6 +10,7 @@ import AnimalManager from "../modules/AnimalManager"
 import EmployeeManager from "../modules/EmployeeManager"
 import OwnerManager from "../modules/OwnerManager"
 import LocationManager from "../modules/LocationManager"
+import AnimalDetail from "./animal/AnimalDetail"
 
 export default class ApplicationViews extends Component {
     state = {
@@ -104,20 +105,28 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
+
                 <Route exact path="/animals" render={(props) => {
                     return <AnimalList 
-                    deleteAnimal={this.deleteAnimal} 
                     animals={this.state.animals} />
                 }} />
+                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                     return <AnimalDetail {...props} 
+                     deleteAnimal={this.deleteAnimal} 
+                     animals={this.state.animals} />
+                }} />
+
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList 
                     deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                 }} /> 
+
                 <Route exact path="/owners" render={(props) => {
                     return <OwnerList 
                     deleteOwner={this.deleteOwner} 
                     owners={this.state.owners} />
                 }} />   
+
             </React.Fragment>
         )
     }
