@@ -14,6 +14,7 @@ import AnimalDetail from "./animal/AnimalDetail"
 import EmployeeDetail from "./employee/EmployeeDetail"
 import OwnerDetail from "./owner/OwnerDetail"
 import LocationDetail from "./location/LocationDetail"
+import AnimalForm from "./animal/AnimalForm"
 
 
 
@@ -110,7 +111,13 @@ export default class ApplicationViews extends Component {
       )
     }
 // Above 'componentDidMount' and 'delete' are methods on the class 'ApplicationViews'
-
+    addAnimal = (animal) => AnimalManager.post(animal)
+        .then(() => AnimalManager.getAll())
+        .then(animals => this.setState({
+            animals: animals
+        })
+      )
+    
 
     // You will notice the use of <React.Fragment />. That is simply a React wrapper around your old friend document.createDocumentFragment(). What this does is prevent unnecessary <div>, <article>, or <section> tags from being created.
 
@@ -129,15 +136,22 @@ export default class ApplicationViews extends Component {
                 }} />
 
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList 
+                    return <AnimalList {...props} 
                     deleteAnimal={this.deleteAnimal}
                     animals={this.state.animals} />
+                }} />
+                <Route path="/animals/new" render={(props) => {
+                     return <AnimalForm {...props}
+                     addAnimal={this.addAnimal}
+                     employees={this.state.employees} />
                 }} />
                 <Route path="/animals/:animalId(\d+)" render={(props) => {
                      return <AnimalDetail {...props} 
                      deleteAnimal={this.deleteAnimal} 
                      animals={this.state.animals} />
                 }} />
+                 
+                
 
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList 

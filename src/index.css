@@ -8,7 +8,6 @@
 
 .list {
   margin-top:50px;
-  margin-left: 20px;
 }
 
 .animals {
@@ -26,3 +25,7 @@
 .owners {
   color: brown;
   }
+
+.animalForm {
+  margin-top: 50px;
+}
