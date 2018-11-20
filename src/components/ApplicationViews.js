@@ -136,7 +136,7 @@ export default class ApplicationViews extends Component {
                 }} />
 
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList 
+                    return <AnimalList {...props} 
                     deleteAnimal={this.deleteAnimal}
                     animals={this.state.animals} />
                 }} />
