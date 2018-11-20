@@ -129,6 +129,7 @@ export default class ApplicationViews extends Component {
     
 
     // You will notice the use of <React.Fragment />. That is simply a React wrapper around your old friend document.createDocumentFragment(). What this does is prevent unnecessary <div>, <article>, or <section> tags from being created.
+    // ":animalId(\d+)"<---- this is a variable preceded by a colon(:)..(\d+) is a pattern match saying this needs to be a number, this is essentially a query.  react is also saving the id in that "animalId" variable
 
     render() {
         return (
@@ -143,6 +144,7 @@ export default class ApplicationViews extends Component {
                      deleteLocation={this.deleteLocation} 
                      locations={this.state.locations} />
                 }} />
+
 
                 <Route exact path="/animals" render={(props) => {
                     return <AnimalList {...props} 

@@ -80,12 +80,6 @@
       "breed": "cat",
       "employeeId": 5,
       "id": 8
-    },
-    {
-      "name": "big boy",
-      "breed": "cat",
-      "employeeId": 5,
-      "id": 9
     }
   ],
   "owners": [
