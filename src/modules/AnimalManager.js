@@ -1,5 +1,6 @@
 const remoteURL = "http://localhost:5002"
 
+// below you'll find a generic get and getAll
 export default {
   get(id) {
     return fetch(`${remoteURL}/animals/${id}`).then(e => e.json())

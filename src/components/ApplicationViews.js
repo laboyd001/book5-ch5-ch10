@@ -140,16 +140,17 @@ export default class ApplicationViews extends Component {
                     deleteAnimal={this.deleteAnimal}
                     animals={this.state.animals} />
                 }} />
+                <Route path="/animals/new" render={(props) => {
+                     return <AnimalForm {...props}
+                     addAnimal={this.addAnimal}
+                     employees={this.state.employees} />
+                }} />
                 <Route path="/animals/:animalId(\d+)" render={(props) => {
                      return <AnimalDetail {...props} 
                      deleteAnimal={this.deleteAnimal} 
                      animals={this.state.animals} />
                 }} />
-                 <Route path="/animals/new" render={(props) => {
-                     return <AnimalForm {...props}
-                     addAnimal={this.addAnimal}
-                     employees={this.state.employees} />
-                }} />
+                 
                 
 
                 <Route exact path="/employees" render={(props) => {
