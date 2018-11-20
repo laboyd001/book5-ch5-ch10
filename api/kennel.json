@@ -2,19 +2,28 @@
   "employees": [
     {
       "id": 1,
-      "name": "Jessica Younker"
+      "name": "Jessica Younker",
+      "email": "jessica@gmail.com"
     },
     {
       "id": 2,
-      "name": "Jordan Nelson"
+      "name": "Jordan Nelson",
+      "email": "jordan@gmail.com"
     },
     {
       "id": 3,
-      "name": "Zoe LeBlanc"
+      "name": "Zoe LeBlanc",
+      "email": "zoe@gmail.com"
     },
     {
       "id": 4,
-      "name": "Blaise Roberts"
+      "name": "Blaise Roberts",
+      "email": "blaise@gmail.com"
+    },
+    {
+      "id": 5,
+      "name": "Lesley Boyd",
+      "email": "lesley@gmail.com"
     }
   ],
   "locations": [
@@ -27,24 +36,38 @@
       "id": 2,
       "name": "Nashville South",
       "address": "10101 Binary Court"
+    },
+    {
+      "id": 3,
+      "name": "Test South",
+      "address": "123 Main St."
     }
   ],
   "animals": [
     {
       "id": 3,
-      "name": "Angus"
+      "name": "Angus",
+      "breed": "Pitbull"
     },
     {
       "id": 4,
-      "name": "Henley"
+      "name": "Henley",
+      "breed": "Labrador Retriever"
     },
     {
       "id": 5,
-      "name": "Derkins"
+      "name": "Derkins",
+      "breed": "Beagle"
     },
     {
       "id": 6,
-      "name": "Checkers"
+      "name": "Checkers",
+      "breed": "Pug"
+    },
+    {
+      "id": 7,
+      "name": "Grits",
+      "breed": "Cat"
     }
   ],
   "owners": [
@@ -66,6 +89,11 @@
     {
       "id": 4,
       "name": "Kirk Cobain",
+      "phone": "333-4545"
+    },
+    {
+      "id": 5,
+      "name": "Lesley Boyd",
       "phone": "333-4545"
     }
   ]

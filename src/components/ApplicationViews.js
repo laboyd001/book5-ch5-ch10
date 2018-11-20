@@ -10,6 +10,13 @@ import AnimalManager from "../modules/AnimalManager"
 import EmployeeManager from "../modules/EmployeeManager"
 import OwnerManager from "../modules/OwnerManager"
 import LocationManager from "../modules/LocationManager"
+import AnimalDetail from "./animal/AnimalDetail"
+import EmployeeDetail from "./employee/EmployeeDetail"
+import OwnerDetail from "./owner/OwnerDetail"
+import LocationDetail from "./location/LocationDetail"
+
+
+
 
 export default class ApplicationViews extends Component {
     state = {
@@ -21,10 +28,6 @@ export default class ApplicationViews extends Component {
 
     componentDidMount() {
         const newState = {}
-
-        // fetch("http://localhost:5002/locations")
-        // .then(r => r.json())
-        // .then(locations => newState.locations = locations)
 
         LocationManager.getAll().then(allLocations => {
             this.setState({
@@ -55,6 +58,19 @@ export default class ApplicationViews extends Component {
 
     // A Note About Component Method Definitions: If a method will be passed to a child component to execute, via props, you must use the syntax like deleteAnimal below, with a fat arrow. Otherwise,use the method shorthand you learned in JS Class syntax, without the fat arrow, like so:
 
+    deleteLocation = id => {
+        return fetch(`http://localhost:5002/locations/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/locations`))
+        .then(e => e.json())
+        .then(locations => this.setState({
+            locations: locations
+        })
+      )
+    }
+    
     deleteAnimal = id => {
         return fetch(`http://localhost:5002/animals/${id}`, {
             method: "DELETE"
@@ -102,22 +118,49 @@ export default class ApplicationViews extends Component {
         return (
             <React.Fragment>
                 <Route exact path="/" render={(props) => {
-                    return <LocationList locations={this.state.locations} />
+                    return <LocationList 
+                    deleteLocation={this.deleteLocation}
+                    locations={this.state.locations} />
                 }} />
+                <Route path="/locations/:locationId(\d+)" render={(props) => {
+                     return <LocationDetail {...props} 
+                     deleteLocation={this.deleteLocation} 
+                     locations={this.state.locations} />
+                }} />
+
                 <Route exact path="/animals" render={(props) => {
                     return <AnimalList 
-                    deleteAnimal={this.deleteAnimal} 
+                    deleteAnimal={this.deleteAnimal}
                     animals={this.state.animals} />
                 }} />
+                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                     return <AnimalDetail {...props} 
+                     deleteAnimal={this.deleteAnimal} 
+                     animals={this.state.animals} />
+                }} />
+
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList 
-                    deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    deleteEmployee={this.deleteEmployee} 
+                    employees={this.state.employees} />
                 }} /> 
+                <Route path="/employees/:employeeId(\d+)" render={(props) => {
+                     return <EmployeeDetail {...props} 
+                     deleteEmployee={this.deleteEmployee} 
+                     employees={this.state.employees} />
+                }} />
+
                 <Route exact path="/owners" render={(props) => {
                     return <OwnerList 
                     deleteOwner={this.deleteOwner} 
                     owners={this.state.owners} />
+                }} />
+                 <Route path="/owners/:ownerId(\d+)" render={(props) => {
+                     return <OwnerDetail {...props} 
+                     deleteOwner={this.deleteOwner} 
+                     owners={this.state.owners} />
                 }} />   
+
             </React.Fragment>
         )
     }
