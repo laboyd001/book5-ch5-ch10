@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import kennel from "./KennelIcon.jpg"
+import dogHouse from "./KennelIcon.jpg"
 import "./Location.css"
 import { Link } from "react-router-dom";
 
@@ -7,16 +7,27 @@ import { Link } from "react-router-dom";
 export default class LocationList extends Component {
   render() {
     return (
+      <React.Fragment>
+         <div className="locationButton">
+          <button type="button"
+                  className="btn btn-success"
+                  onClick={() => {
+                      this.props.history.push("/locations/new")}
+                  }>
+              Add Location
+          </button>
+      </div>
+
       <section className="locations list">
-        {this.props.locations.map(location =>
-          <div key={location.id} className="card">
+        {this.props.locations.map(kennel =>
+          <div key={kennel.id} className="card">
             <div className="card-body">
               <h5 className="card-title">
-                <img src={kennel} className="icon--location" alt="kennel" />
-                {location.name}
-                <Link className="nav-link" to={`/locations/${location.id}`}>Details</Link>
+                <img src={dogHouse} className="icon--location" alt="kennel" />
+                {kennel.name}
+                <Link className="nav-link" to={`/locations/${kennel.id}`}>Details</Link>
                 <a href="#"
-                  onClick={() => this.props.deleteLocation(location.id)}
+                  onClick={() => this.props.deleteLocation(kennel.id)}
                   className="card-link">Delete</a>
               </h5> 
             </div>
@@ -24,6 +35,7 @@ export default class LocationList extends Component {
          )
         }
       </section>
+      </React.Fragment>
     )
   }
 }

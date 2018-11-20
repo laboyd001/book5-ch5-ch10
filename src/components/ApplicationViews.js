@@ -16,10 +16,8 @@ import OwnerDetail from "./owner/OwnerDetail"
 import LocationDetail from "./location/LocationDetail"
 import AnimalForm from "./animal/AnimalForm"
 import EmployeeForm from "./employee/EmployeeForm"
-
-
-
-
+import OwnerForm from "./owner/OwnerForm"
+import LocationForm from "./location/LocationForm"
 
 export default class ApplicationViews extends Component {
     state = {
@@ -126,6 +124,20 @@ export default class ApplicationViews extends Component {
           employees: employees
       })
     )
+
+    addOwner = (owner) => OwnerManager.post(owner)
+      .then(() => OwnerManager.getAll())
+      .then(owners => this.setState({
+          owners: owners
+      })
+    )
+
+    addLocation = (kennel) => LocationManager.post(kennel)
+      .then(() => LocationManager.getAll())
+      .then(locations => this.setState({
+          locations: locations
+      })
+    )
     
 
     // You will notice the use of <React.Fragment />. That is simply a React wrapper around your old friend document.createDocumentFragment(). What this does is prevent unnecessary <div>, <article>, or <section> tags from being created.
@@ -135,9 +147,14 @@ export default class ApplicationViews extends Component {
         return (
             <React.Fragment>
                 <Route exact path="/" render={(props) => {
-                    return <LocationList 
+                    return <LocationList {...props}
                     deleteLocation={this.deleteLocation}
                     locations={this.state.locations} />
+                }} />
+                 <Route path="/locations/new" render={(props) => {
+                     return <LocationForm {...props}
+                     addLocation={this.addLocation}
+                     locations={this.state.locations} />
                 }} />
                 <Route path="/locations/:locationId(\d+)" render={(props) => {
                      return <LocationDetail {...props} 
@@ -181,9 +198,14 @@ export default class ApplicationViews extends Component {
                 }} />
 
                 <Route exact path="/owners" render={(props) => {
-                    return <OwnerList 
+                    return <OwnerList {...props}
                     deleteOwner={this.deleteOwner} 
                     owners={this.state.owners} />
+                }} />
+                <Route path="/owners/new" render={(props) => {
+                     return <OwnerForm {...props}
+                     addOwner={this.addOwner}
+                     animals={this.state.animals} />
                 }} />
                  <Route path="/owners/:ownerId(\d+)" render={(props) => {
                      return <OwnerDetail {...props} 
