@@ -1,6 +1,6 @@
 // This is a Controller Component. Its only responsibility to to control the behavior of the system. It maps URLs to components.
 
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import React, { Component } from "react"
 import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
@@ -18,8 +18,13 @@ import AnimalForm from "./animal/AnimalForm"
 import EmployeeForm from "./employee/EmployeeForm"
 import OwnerForm from "./owner/OwnerForm"
 import LocationForm from "./location/LocationForm"
+import Login from './authentication/Login'
 
 export default class ApplicationViews extends Component {
+
+    // Check if credentials are in local storage
+    isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
     state = {
         locations: [],
         animals: [],
@@ -146,6 +151,8 @@ export default class ApplicationViews extends Component {
     render() {
         return (
             <React.Fragment>
+                <Route path="/login" component={Login} />
+                
                 <Route exact path="/" render={(props) => {
                     return <LocationList {...props}
                     deleteLocation={this.deleteLocation}
@@ -216,6 +223,7 @@ export default class ApplicationViews extends Component {
             </React.Fragment>
         )
     }
+     
 }
 
 
