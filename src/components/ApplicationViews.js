@@ -15,6 +15,8 @@ import EmployeeDetail from "./employee/EmployeeDetail"
 import OwnerDetail from "./owner/OwnerDetail"
 import LocationDetail from "./location/LocationDetail"
 import AnimalForm from "./animal/AnimalForm"
+import EmployeeForm from "./employee/EmployeeForm"
+
 
 
 
@@ -117,9 +119,17 @@ export default class ApplicationViews extends Component {
             animals: animals
         })
       )
+
+     addEmployee = (employee) => EmployeeManager.post(employee)
+      .then(() => EmployeeManager.getAll())
+      .then(employees => this.setState({
+          employees: employees
+      })
+    )
     
 
     // You will notice the use of <React.Fragment />. That is simply a React wrapper around your old friend document.createDocumentFragment(). What this does is prevent unnecessary <div>, <article>, or <section> tags from being created.
+    // ":animalId(\d+)"<---- this is a variable preceded by a colon(:)..(\d+) is a pattern match saying this needs to be a number, this is essentially a query.  react is also saving the id in that "animalId" variable
 
     render() {
         return (
@@ -134,6 +144,7 @@ export default class ApplicationViews extends Component {
                      deleteLocation={this.deleteLocation} 
                      locations={this.state.locations} />
                 }} />
+
 
                 <Route exact path="/animals" render={(props) => {
                     return <AnimalList {...props} 
@@ -154,10 +165,15 @@ export default class ApplicationViews extends Component {
                 
 
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList 
+                    return <EmployeeList {...props}
                     deleteEmployee={this.deleteEmployee} 
                     employees={this.state.employees} />
                 }} /> 
+                <Route path="/employees/new" render={(props) => {
+                     return <EmployeeForm {...props}
+                     addEmployee={this.addEmployee}
+                     animals={this.state.animals} />
+                }} />
                 <Route path="/employees/:employeeId(\d+)" render={(props) => {
                      return <EmployeeDetail {...props} 
                      deleteEmployee={this.deleteEmployee} 

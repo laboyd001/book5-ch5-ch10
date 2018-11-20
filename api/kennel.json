@@ -24,6 +24,12 @@
       "id": 5,
       "name": "Lesley Boyd",
       "email": "lesley@gmail.com"
+    },
+    {
+      "name": "John Doe",
+      "email": "john@gmail.com",
+      "animalId": 3,
+      "id": 6
     }
   ],
   "locations": [
