@@ -1,0 +1,31 @@
+.owners {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.icon--dog {
+  width: 50px;
+  height: 50px;
+}
+
+.card {
+  background-color: salmon;
+  margin: auto;
+  
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 0.7em;
+  color: purple;
+  }

@@ -11,6 +11,10 @@ import EmployeeManager from "../modules/EmployeeManager"
 import OwnerManager from "../modules/OwnerManager"
 import LocationManager from "../modules/LocationManager"
 import AnimalDetail from "./animal/AnimalDetail"
+import EmployeeDetail from "./employee/EmployeeDetail"
+import OwnerDetail from "./owner/OwnerDetail"
+
+
 
 export default class ApplicationViews extends Component {
     state = {
@@ -22,10 +26,6 @@ export default class ApplicationViews extends Component {
 
     componentDidMount() {
         const newState = {}
-
-        // fetch("http://localhost:5002/locations")
-        // .then(r => r.json())
-        // .then(locations => newState.locations = locations)
 
         LocationManager.getAll().then(allLocations => {
             this.setState({
@@ -118,13 +118,22 @@ export default class ApplicationViews extends Component {
 
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList 
-                    deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    employees={this.state.employees} />
                 }} /> 
+                <Route path="/employees/:employeeId(\d+)" render={(props) => {
+                     return <EmployeeDetail {...props} 
+                     deleteEmployee={this.deleteEmployee} 
+                     employees={this.state.employees} />
+                }} />
 
                 <Route exact path="/owners" render={(props) => {
                     return <OwnerList 
-                    deleteOwner={this.deleteOwner} 
                     owners={this.state.owners} />
+                }} />
+                 <Route path="/owners/:ownerId(\d+)" render={(props) => {
+                     return <OwnerDetail {...props} 
+                     deleteOwner={this.deleteOwner} 
+                     owners={this.state.owners} />
                 }} />   
 
             </React.Fragment>
