@@ -8,6 +8,12 @@
   height: 50px;
 }
 
+.ownerButton {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 40px;
+}
+
 .card {
   background-color: salmon;
   margin: auto;
