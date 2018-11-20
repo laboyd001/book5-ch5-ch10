@@ -24,6 +24,12 @@
       "id": 5,
       "name": "Lesley Boyd",
       "email": "lesley@gmail.com"
+    },
+    {
+      "name": "John Doe",
+      "email": "john@gmail.com",
+      "animalId": 3,
+      "id": 6
     }
   ],
   "locations": [
@@ -74,6 +80,12 @@
       "breed": "cat",
       "employeeId": 5,
       "id": 8
+    },
+    {
+      "name": "big boy",
+      "breed": "cat",
+      "employeeId": 5,
+      "id": 9
     }
   ],
   "owners": [

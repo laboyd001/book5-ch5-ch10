@@ -3,29 +3,20 @@ import girl from "./EmployeeIcon.jpg"
 import "./Employee.css"
 import { Link } from "react-router-dom";
 
-// this is the HTML representation of the employee list
-// export default class EmployeeList extends Component {
-//   render() {
-//     return (
-//       <section className="employees list">
-//       <h2>Employee List</h2>
-//         {this.props.employees.map(employee =>
-//             <div key={employee.id}>
-//                <li> {employee.name} </li>
-//                <a href="#"
-//                   onClick={() => this.props.deleteEmployee(employee.id)} alt="employee"
-//                   >Delete</a>
-//             </div>
-//          )
-//         }
-//       </section>
-//     )
-//   }
-// }
-
 export default class EmployeeList extends Component {
     render() {
       return (
+        <React.Fragment> 
+      <div className="employeeButton">
+          <button type="button"
+                  className="btn btn-success"
+                  onClick={() => {
+                      this.props.history.push("/employees/new")}
+                  }>
+              Add Employee
+          </button>
+      </div>
+
         <section className="employees list">
           {this.props.employees.map(employee =>
               <div key={employee.id} className="card">
@@ -45,6 +36,7 @@ export default class EmployeeList extends Component {
            )
           }
         </section>
+        </React.Fragment>
       )
     }
   }
