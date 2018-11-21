@@ -152,11 +152,15 @@ export default class ApplicationViews extends Component {
         return (
             <React.Fragment>
                 <Route path="/login" component={Login} />
-                
+
                 <Route exact path="/" render={(props) => {
+                     if (this.isAuthenticated()){
                     return <LocationList {...props}
                     deleteLocation={this.deleteLocation}
                     locations={this.state.locations} />
+                } else {
+                    return <Redirect to="/login" />
+                }
                 }} />
                  <Route path="/locations/new" render={(props) => {
                      return <LocationForm {...props}
@@ -171,9 +175,13 @@ export default class ApplicationViews extends Component {
 
 
                 <Route exact path="/animals" render={(props) => {
+                     if (this.isAuthenticated()){
                     return <AnimalList {...props} 
                     deleteAnimal={this.deleteAnimal}
                     animals={this.state.animals} />
+                } else {
+                    return <Redirect to="/login" />
+                }
                 }} />
                 <Route path="/animals/new" render={(props) => {
                      return <AnimalForm {...props}
@@ -189,9 +197,13 @@ export default class ApplicationViews extends Component {
                 
 
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList {...props}
-                    deleteEmployee={this.deleteEmployee} 
-                    employees={this.state.employees} />
+                    if (this.isAuthenticated()){
+                        return <EmployeeList {...props}
+                        deleteEmployee={this.deleteEmployee} 
+                        employees={this.state.employees} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} /> 
                 <Route path="/employees/new" render={(props) => {
                      return <EmployeeForm {...props}
@@ -204,10 +216,15 @@ export default class ApplicationViews extends Component {
                      employees={this.state.employees} />
                 }} />
 
+
                 <Route exact path="/owners" render={(props) => {
+                    if (this.isAuthenticated()){
                     return <OwnerList {...props}
                     deleteOwner={this.deleteOwner} 
                     owners={this.state.owners} />
+                } else {
+                    return <Redirect to="/login" />
+                }
                 }} />
                 <Route path="/owners/new" render={(props) => {
                      return <OwnerForm {...props}
