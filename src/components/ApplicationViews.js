@@ -157,6 +157,7 @@ export default class ApplicationViews extends Component {
                      if (this.isAuthenticated()){
                     return <LocationList {...props}
                     deleteLocation={this.deleteLocation}
+                    employees={this.state.employees}
                     locations={this.state.locations} />
                 } else {
                     return <Redirect to="/login" />
@@ -199,7 +200,8 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/employees" render={(props) => {
                     if (this.isAuthenticated()){
                         return <EmployeeList {...props}
-                        deleteEmployee={this.deleteEmployee} 
+                        deleteEmployee={this.deleteEmployee}
+                        animals={this.state.animals} 
                         employees={this.state.employees} />
                     } else {
                         return <Redirect to="/login" />
