@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import dogHouse from "./KennelIcon.jpg"
 import "./Location.css"
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import EmployeeCard from "../employee/EmployeeCard"
 
 // this is an HTML representation of the location list
 export default class LocationList extends Component {
@@ -20,6 +21,7 @@ export default class LocationList extends Component {
 
       <section className="locations list">
         {this.props.locations.map(kennel =>
+        <div>
           <div key={kennel.id} className="card">
             <div className="card-body">
               <h5 className="card-title">
@@ -30,6 +32,20 @@ export default class LocationList extends Component {
                   onClick={() => this.props.deleteLocation(kennel.id)}
                   className="card-link">Delete</a>
               </h5> 
+            </div>
+          </div>
+
+          <br></br>
+
+
+          
+            <h6 class="card-subtitle mb-2 text-muted">Employees</h6>
+            <div className="locations--employees">
+              {
+                this.props.employees
+                  .filter(emp => emp.locationId === kennel.id)
+                  .map(emp=> <EmployeeCard key={emp.id} employee={emp} {...this.props} />)
+              }
             </div>
           </div>
          )
