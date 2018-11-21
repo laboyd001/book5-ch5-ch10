@@ -35,26 +35,61 @@ export default class Login extends Component {
 
     render() {
         return (
-            <form className="login" onSubmit={this.handleLogin}>
-                <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <label htmlFor="inputEmail">
-                    Email address
-                </label>
-                <input onChange={this.handleFieldChange} type="email"
-                       id="email"
-                       placeholder="Email address"
-                       required="" autoFocus="" />
-                <label htmlFor="inputPassword">
-                    Password
-                </label>
-                <input onChange={this.handleFieldChange} type="password"
-                       id="password"
-                       placeholder="Password"
-                       required="" />
-                <button type="submit">
-                    Sign in
-                </button>
-            </form>
+            <React.Fragment>
+                <form className="login" onSubmit={this.handleLogin}>
+                    <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <label htmlFor="inputEmail">
+                        Email address
+                    </label>
+                    <input onChange={this.handleFieldChange} type="email"
+                        id="email"
+                        placeholder="Email address"
+                        required="" autoFocus="" />
+                    <label htmlFor="inputPassword">
+                        Password
+                    </label>
+                    <input onChange={this.handleFieldChange} type="password"
+                        id="password"
+                        placeholder="Password"
+                        required="" />
+                    <button type="submit">
+                        Sign in
+                    </button>
+                </form>
+
+                <form className="register" onSubmit={this.handleLogin}>
+                    <h1 className="h3 mb-3 font-weight-normal">Register</h1>
+
+                    <label htmlFor="inputUsername">
+                        Username
+                    </label>
+                    <input onChange={this.handleFieldChange} type="username"
+                        id="username"
+                        placeholder="username"
+                        required="" autoFocus="" />
+
+                    
+                    <label htmlFor="inputEmail">
+                        Email address
+                    </label>
+                    <input onChange={this.handleFieldChange} type="email"
+                        id="newEmail"
+                        placeholder="Email address"
+                        required="" autoFocus="" />
+
+
+                    <label htmlFor="inputPassword">
+                        Password
+                    </label>
+                    <input onChange={this.handleFieldChange} type="password"
+                        id="newPassword"
+                        placeholder="Password"
+                        required="" />
+                    <button type="submit">
+                        Register
+                    </button>
+                </form>
+            </React.Fragment>
         )
     }
 }

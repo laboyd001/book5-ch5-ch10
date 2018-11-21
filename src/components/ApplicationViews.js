@@ -10,6 +10,7 @@ import AnimalManager from "../modules/AnimalManager"
 import EmployeeManager from "../modules/EmployeeManager"
 import OwnerManager from "../modules/OwnerManager"
 import LocationManager from "../modules/LocationManager"
+import UserManager from '../modules/UserManager'
 import AnimalDetail from "./animal/AnimalDetail"
 import EmployeeDetail from "./employee/EmployeeDetail"
 import OwnerDetail from "./owner/OwnerDetail"
@@ -19,6 +20,7 @@ import EmployeeForm from "./employee/EmployeeForm"
 import OwnerForm from "./owner/OwnerForm"
 import LocationForm from "./location/LocationForm"
 import Login from './authentication/Login'
+
 
 export default class ApplicationViews extends Component {
 
@@ -56,6 +58,12 @@ export default class ApplicationViews extends Component {
         OwnerManager.getAll().then(allOwners => {
             this.setState({
                 owners: allOwners
+            })
+        })
+
+        UserManager.getAll().then(allUsers => {
+            this.setState({
+                users: allUsers
             })
         })
 
@@ -115,6 +123,19 @@ export default class ApplicationViews extends Component {
         })
       )
     }
+
+    deleteUser = id => {
+        return fetch(`http://localhost:5002/users/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/users`))
+        .then(e => e.json())
+        .then(users => this.setState({
+            users: users
+        })
+      )
+    }
 // Above 'componentDidMount' and 'delete' are methods on the class 'ApplicationViews'
     addAnimal = (animal) => AnimalManager.post(animal)
         .then(() => AnimalManager.getAll())
@@ -141,6 +162,13 @@ export default class ApplicationViews extends Component {
       .then(() => LocationManager.getAll())
       .then(locations => this.setState({
           locations: locations
+      })
+    )
+
+    addUser = (user) => UserManager.post(user)
+      .then(() => UserManager.getAll())
+      .then(users => this.setState({
+          users: users
       })
     )
     
