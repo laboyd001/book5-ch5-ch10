@@ -13,15 +13,26 @@ export default class APIManager {
         all of the more specialized one, then the string
         of `animals` should not be hard coded here.
     */
-    return fetch(`${remoteURL}/${this.resouce}/${id}`).then(data => data.json())
+    return fetch(`${remoteURL}/${this.resource}/${id}`).then(data => data.json())
   }
 
   all() {
+    console.log("resource", this.resource)
     return fetch(`${remoteURL}/${this.resource}`).then(data => data.json())
   }
 
   delete (id) {
     return fetch(`${remoteURL}/${this.resource}/${id}`, {method: "DELETE"}).then(data=> data.json())
+  }
+
+  post(newObject) {
+    return fetch(`${remoteURL}/${this.resource}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newObject)
+    }).then (data=> data.json())
   }
 
 }

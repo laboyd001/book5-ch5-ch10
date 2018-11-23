@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "email": "test@test.com",
+      "password": "test"
+    }
+  ],
   "employees": [
     {
       "id": 1,
@@ -95,6 +102,12 @@
       "breed": "cat",
       "employeeId": 5,
       "id": 8
+    },
+    {
+      "name": "my animal",
+      "breed": "cat",
+      "employeeId": 2,
+      "id": 9
     }
   ],
   "owners": [
