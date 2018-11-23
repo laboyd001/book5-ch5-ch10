@@ -11,7 +11,7 @@ export default class EmployeeCard extends Component {
             <div key={this.props.employee.id} className="card">
                 <div className="card-body">
                     <h5 className="card-title">
-                        <img src={girl} className="icon--employee" />
+                        <img src={girl} className="icon--employee" alt="girl" />
                         {this.props.employee.name}
                         <Link className="nav-link" to={`/employees/${this.props.employee.id}`}>Details</Link>
                         <a href="#"

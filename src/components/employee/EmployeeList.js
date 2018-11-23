@@ -19,12 +19,12 @@ export default class EmployeeList extends Component {
 
           <section className="employees list">
             {this.props.employees.map(employee =>
-              <div>
+              <div className="employee--card">
                 <EmployeeCard key={employee.id} employee=
                   {employee} {...this.props} />
                       <br></br>
 
-                    <h6 class="card-subtitle mb-2 text-muted">Caretaker For </h6>
+                    <h6 className="card-subtitle mb-2 text-muted">Caretaker For </h6>
                     <div className="animals--caretaker">
                       {
                         this.props.animals
