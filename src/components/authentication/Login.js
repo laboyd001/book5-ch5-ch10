@@ -69,12 +69,13 @@ export default class Login extends Component {
       password: this.state.password
     };
 
-    UserManager.getAll().then(result => {                     let userEmail = result.find(item => {
+    UserManager.getAll().then(result => {
+      let userEmail = result.find(item => {
         return newUser.email === item.email;
       });
       if (userEmail) {
         alert("email already exists");
-       } else {
+      } else {
         UserManager.post(newUser).then(() => {
           alert("You're registered");
         });
