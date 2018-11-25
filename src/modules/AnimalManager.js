@@ -35,6 +35,10 @@ class AnimalManager extends APIManager {
   removeAndList(id) {
     return this.delete(id).then(() => this.all())
   }
+
+  edit (id){
+    return this.edit(id).then(()=> this.all())
+  }
 }
 
 export default new AnimalManager("animals")

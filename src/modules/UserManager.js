@@ -18,5 +18,20 @@ export default {
       },
       body: JSON.stringify(newUser)
     }).then(data => data.json())
-  }
+  },
+   delete (id) {
+    return fetch (`${remoteURL}/users/${id}`,{
+      method: "DELETE"
+    })
+    .then(()=>{return fetch(`${remoteURL}/users`).then(e=> e.json())})
+   },
+   patch (id, editUser){
+     return fetch(`${remoteURL}/users/${id}`, {
+       method: "PATCH",
+       headers: {
+          "Content-Type": "application/json"
+       },
+       body: JSON.stringify(editUser)
+     }).then(e=>e.json())
+   }
 }

@@ -20,6 +20,8 @@ import EmployeeForm from "./employee/EmployeeForm"
 import OwnerForm from "./owner/OwnerForm"
 import LocationForm from "./location/LocationForm"
 import Login from './authentication/Login'
+import APIManager from '../modules/APIManager'
+import AnimalEdit from './animal/AnimalEdit'
 
 
 export default class ApplicationViews extends Component {
@@ -171,6 +173,11 @@ export default class ApplicationViews extends Component {
           users: users
       })
     )
+
+    editAnimal = (id, animal) => AnimalManager.edit(id, animal)
+        .then(animals => this.setState({
+            animals: animals
+        }))
     
 
     // You will notice the use of <React.Fragment />. That is simply a React wrapper around your old friend document.createDocumentFragment(). What this does is prevent unnecessary <div>, <article>, or <section> tags from being created.
@@ -221,6 +228,12 @@ export default class ApplicationViews extends Component {
                      return <AnimalDetail {...props} 
                      deleteAnimal={this.deleteAnimal} 
                      animals={this.state.animals} />
+                }} />
+                <Route path="/animals/edit/:animalId(\d+)" render={(props) => {
+                    return <AnimalEdit {...props}
+                    animals={this.state.animals}
+                    employees={this.state.employees}
+                    editAnimal={this.editAnimal}/>
                 }} />
                  
                 
