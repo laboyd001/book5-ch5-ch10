@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 import "./Animal.css";
 import dog from "./DogIcon.png";
 
@@ -23,6 +24,7 @@ export default class AnimalDetail extends Component {
               {animal.name}
             </h4>
             <h6 className="card-title">{animal.breed}</h6>
+            <Link className="nav-link" to={`/animals/edit/${animal.id}`}>edit</Link>
             <a
               href="#"
               onClick={() =>

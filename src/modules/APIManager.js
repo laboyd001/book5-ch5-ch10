@@ -35,4 +35,14 @@ export default class APIManager {
     }).then (data=> data.json())
   }
 
+  edit (id, newObject) {
+    return fetch(`${remoteURL}/${this.resource}/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(newObject),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(data => data.json()).then(() =>this.all(this.resource))
+  }
+
 }
