@@ -7,7 +7,7 @@ export default class AnimalEdit extends Component {
     this.setState(animal);
   }
   state = {
-    animalName: "",
+    name: "",
     id:"",
     breed: "",
     employeeId: ""
@@ -23,7 +23,7 @@ export default class AnimalEdit extends Component {
     evt.preventDefault()
     const conditionEmployee = typeof this.state.employeeId === 'number'
     const newAnimal = {
-      name: this.state.animalName,
+      name: this.state.name,
       breed: this.state.breed,
       employeeId: conditionEmployee ? this.state.employeeId : this.props.employees.find(e=> e.name === this.state.employeeId).id,
       id: this.state.id

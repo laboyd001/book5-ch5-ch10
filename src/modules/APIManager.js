@@ -37,7 +37,7 @@ export default class APIManager {
 
   edit (id, newObject) {
     return fetch(`${remoteURL}/${this.resource}/${id}`, {
-      method: "PUT",
+      method: "PATCH",
       body: JSON.stringify(newObject),
       headers: {
         "Content-Type": "application/json"
