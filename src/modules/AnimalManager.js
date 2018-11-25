@@ -36,8 +36,8 @@ class AnimalManager extends APIManager {
     return this.delete(id).then(() => this.all())
   }
 
-  edit (id){
-    return this.edit(id).then(()=> this.all())
+  editAnimal (id){
+    return this.edit(id)
   }
 }
 
