@@ -48,7 +48,7 @@ import "./Animal.css";
             <label htmlFor="animalName">Animal name</label>
             <input
               type="text"
-              required="true"
+              required
               className="form-control"
               onChange={this.handleFieldChange}
               id="animalName"
@@ -59,7 +59,7 @@ import "./Animal.css";
             <label htmlFor="breed">Breed</label>
             <input
               type="text"
-              required="true"
+              required
               className="form-control"
               onChange={this.handleFieldChange}
               id="breed"

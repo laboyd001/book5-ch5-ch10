@@ -48,7 +48,7 @@ import "./Employee.css";
             <label htmlFor="employeeName">Employee name</label>
             <input
               type="text"
-              required="true"
+              required
               className="form-control"
               onChange={this.handleFieldChange}
               id="employeeName"
@@ -59,7 +59,7 @@ import "./Employee.css";
             <label htmlFor="email">Email</label>
             <input
               type="text"
-              required="true"
+              required
               className="form-control"
               onChange={this.handleFieldChange}
               id="email"
