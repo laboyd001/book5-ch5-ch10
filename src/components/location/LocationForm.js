@@ -44,7 +44,7 @@ import "./Location.css";
             <label htmlFor="locationName">Location name</label>
             <input
               type="text"
-              required="true"
+              required
               className="form-control"
               onChange={this.handleFieldChange}
               id="locationName"
@@ -55,7 +55,7 @@ import "./Location.css";
             <label htmlFor="address">Address</label>
             <input
               type="text"
-              required="true"
+              required
               className="form-control"
               onChange={this.handleFieldChange}
               id="address"
